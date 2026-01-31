@@ -9,7 +9,7 @@ A collection of professional bash scripts for monitoring system health and secur
 - [Overview](#overview)
 - [Scripts](#scripts)
   - [smartcheck.sh](#smartchecksh)
-  - [secure-wipe.sh](#secure-wipesh)
+  - [diskwipe.sh](#diskwipesh)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -24,7 +24,7 @@ This repository contains two complementary scripts designed for system administr
 
 1. **smartcheck.sh** - A system health monitoring tool that provides detailed information about RAM, CPU, and disk status with SMART diagnostics.
 
-2. **secure-wipe.sh** - A secure disk wiping utility that permanently destroys all data on selected disks using DoD 5220.22-M compliant methods.
+2. **diskwipe.sh** - A secure disk wiping utility that permanently destroys all data on selected disks using DoD 5220.22-M compliant methods.
 
 ---
 
@@ -90,7 +90,7 @@ Disk #1:
 
 ---
 
-### secure-wipe.sh
+### diskwipe.sh
 
 **Purpose:** Securely and permanently erase all data from selected disk drives using military-grade wiping methods.
 
@@ -176,7 +176,7 @@ Pass 3/3: Final zero pass...
 
 - Linux-based operating system (Debian, Ubuntu, Proxmox, etc.)
 - Bash shell (version 4.0 or higher recommended)
-- Root/sudo access (for secure-wipe.sh and dependency installation)
+- Root/sudo access (for diskwipe.sh and dependency installation)
 
 ### Software Dependencies
 
@@ -185,7 +185,7 @@ Pass 3/3: Final zero pass...
 - `util-linux` - Disk utilities (lsblk)
 - `procps` - System utilities (free, lscpu)
 
-**secure-wipe.sh requires:**
+**diskwipe.sh requires:**
 - `coreutils` - Core utilities (dd, shred)
 - `hdparm` - Hard disk parameter utility
 - `smartmontools` - SMART monitoring tools
@@ -207,13 +207,13 @@ git clone https://github.com/RoiVioli/smart-health.git
 cd YOUR_REPO
 
 # Make scripts executable
-chmod +x smartcheck.sh secure-wipe.sh
+chmod +x smartcheck.sh diskwipe.sh
 
 # Run system health check
 ./smartcheck.sh
 
 # Run secure wipe (requires root)
-sudo ./secure-wipe.sh
+sudo ./diskwipe.sh
 ```
 
 ### Manual Installation
@@ -225,10 +225,10 @@ sudo apt install -y smartmontools util-linux procps coreutils hdparm pv bc
 
 # Download scripts individually
 wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/smartcheck.sh](https://github.com/RoiVioli/smart-health/blob/main/testsmart.sh
-wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/secure-wipe.sh](https://github.com/RoiVioli/smart-health/blob/main/diskwipe.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/diskwipe.sh](https://github.com/RoiVioli/smart-health/blob/main/diskwipe.sh
 
 # Set execute permissions
-chmod +x smartcheck.sh secure-wipe.sh
+chmod +x smartcheck.sh diskwipe.sh
 ```
 
 ### System-Wide Installation
@@ -236,11 +236,11 @@ chmod +x smartcheck.sh secure-wipe.sh
 ```bash
 # Copy to /usr/local/bin for system-wide access
 sudo cp smartcheck.sh /usr/local/bin/smartcheck
-sudo cp secure-wipe.sh /usr/local/bin/secure-wipe
+sudo cp diskwipe.sh /usr/local/bin/diskwipe
 
 # Use from anywhere
 smartcheck
-sudo secure-wipe
+sudo diskwipe
 ```
 
 ---
@@ -288,19 +288,19 @@ crontab -e
 
 ---
 
-### secure-wipe.sh
+### diskwipe.sh
 
 **Basic Usage:**
 
 ```bash
-sudo ./secure-wipe.sh
+sudo ./diskwipe.sh
 ```
 
 **Complete Workflow:**
 
 1. **Start Script (as root):**
    ```bash
-   sudo ./secure-wipe.sh
+   sudo ./diskwipe.sh
    ```
 
 2. **Review Available Disks:**
@@ -356,7 +356,7 @@ sudo ./secure-wipe.sh
 - Root required only for dependency installation
 - Read-only access to disk information
 
-### secure-wipe.sh
+### diskwipe.sh
 
 **Data Destruction:**
 - ALL data on selected disk is permanently destroyed
@@ -416,12 +416,12 @@ sudo ./smartcheck.sh
 - USB enclosures may not pass through SMART data
 - Script will display basic disk info only
 
-### secure-wipe.sh Issues
+### diskwipe.sh Issues
 
 **"This script must be run as root"**
 ```bash
 # Always use sudo
-sudo ./secure-wipe.sh
+sudo ./diskwipe.sh
 ```
 
 **"Cannot proceed without all dependencies"**
@@ -437,7 +437,7 @@ sudo apt install coreutils hdparm smartmontools util-linux pv bc
 
 **Process interrupted**
 - Disk may be in inconsistent state
-- Re-run secure-wipe.sh completely
+- Re-run diskwipe.sh completely
 - Check for hardware errors
 
 ---
@@ -448,7 +448,7 @@ sudo apt install coreutils hdparm smartmontools util-linux pv bc
 - `0` - Success, all checks completed
 - `1` - Error (no disks detected, dependencies missing, etc.)
 
-### secure-wipe.sh
+### diskwipe.sh
 - `0` - Successful wipe, no errors
 - `1` - Error (not root, missing dependencies, wipe failed, etc.)
 
@@ -459,7 +459,7 @@ sudo apt install coreutils hdparm smartmontools util-linux pv bc
 ### Version 1.0.0
 - Initial release
 - smartcheck.sh: System health monitoring with SMART diagnostics
-- secure-wipe.sh: DoD-compliant secure disk wiping
+- diskwipe.sh: DoD-compliant secure disk wiping
 
 ---
 
@@ -484,7 +484,7 @@ These scripts are provided "as is" without warranty of any kind. The authors are
 - System downtime
 - Any other consequences of using these scripts
 
-**secure-wipe.sh specifically:**
+**diskwipe.sh specifically:**
 - Permanently destroys data
 - Cannot be undone
 - User assumes all responsibility
