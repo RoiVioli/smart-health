@@ -204,7 +204,7 @@ Pass 3/3: Final zero pass...
 ```bash
 # Download scripts
 git clone https://github.com/RoiVioli/smart-health.git
-cd YOUR_REPO
+cd smart-health
 
 # Make scripts executable
 chmod +x smartcheck.sh diskwipe.sh
@@ -224,8 +224,8 @@ sudo apt update
 sudo apt install -y smartmontools util-linux procps coreutils hdparm pv bc
 
 # Download scripts individually
-wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/smartcheck.sh](https://github.com/RoiVioli/smart-health/blob/main/testsmart.sh
-wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/diskwipe.sh](https://github.com/RoiVioli/smart-health/blob/main/diskwipe.sh
+wget https://raw.githubusercontent.com/RoiVioli/smart-health/main/smartcheck.sh
+wget https://raw.githubusercontent.com/RoiVioli/smart-health/main/diskwipe.sh
 
 # Set execute permissions
 chmod +x smartcheck.sh diskwipe.sh
